@@ -1,0 +1,149 @@
+.login {
+    padding: 70px 0;
+}
+
+.login .row {
+    display: flex;
+    justify-content: center;
+}
+
+.login .col {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.login-title {
+    font-weight: 500;
+    color: #6d4aff;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+
+.login-card {
+    background: #1f2123;
+    padding: 60px 35px 40px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+}
+
+.login .Sign .input-group {
+    display: flex;
+    margin-bottom: 18px;
+}
+
+.login .Sign .input-icon {
+    width: 70px;
+    background: #aaa;
+    color: #000000be;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     border-radius: 8px 0 0 8px;
+}
+
+.login .Sign .text {
+    flex: 1;
+    border-radius: 0 8px 8px 0;
+    background: #faf6ec;
+    color: #000;
+    border: none;
+    outline: none;
+    padding: 22px 20px;
+    font-size: 18px;
+}
+
+.login .Sign .text::placeholder {
+    color: #000;
+}
+
+.login .Sign .input-group:focus-within {
+    box-shadow: 0 10px 30px #8542bd1a;;
+}
+
+.login .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
+    font-size: 15px;
+    color: #e0e0e0;
+}
+
+.login .remember {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.login .remember input {
+    width: 18px;
+    height: 18px;
+    accent-color: #6d4aff;
+}
+
+.login .forgot {
+    color: #e0e0e0;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.login .forgot:hover {
+    text-decoration: underline;
+}
+
+
+.login .btn-login {
+    display: block;
+     margin: 20px auto 0;
+   background-color: #6d4aff;
+    border-color: #6d4aff;
+    color:#ffffff;
+    padding: 20px 0;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Open Sans', arial; 
+    text-decoration: none;
+    box-sizing: border-box;
+    width:80%;
+    transition: all 0.3s ease-in-out;
+}
+
+.login .btn-register {
+    display: block;
+    margin: 20px auto 0;
+   background-color: #faf6ec;
+    border-color: #faf6ec;
+    color:#000;
+    padding: 20px 30px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Open Sans', arial; 
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    width: 50%;  
+}
+
+.login .btn-login:hover {
+    background: #8a4dff;
+}
+
+
+.login .btn-register:hover {
+    background: #faf6ecbc;
+    border-color: #000;
+}
+
+.login .col h5{
+    font-size: 18px;
+    font-weight: 500;
+    color: #faf6ec;
+    padding-top: 20px;
+}

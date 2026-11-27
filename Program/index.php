@@ -1,0 +1,488 @@
+<?php
+include("DBConnection.php");
+    if(isset($_GET["jobSearch"])){
+        $jobSI=trim($_GET["jobSearch"] ?? "");//job search index(name)             
+        $jobSL=trim($_GET["loc"] ?? "");//job search location
+        $jobWS="%".$jobSI."%";//job word seach            
+        $jobSearch=$conn->prepare("SELECT 
+        title, description , posted_at, location, salary_range 
+        FROM jobs WHERE location=? AND title like ?");
+        $jobSearch->bind_param("ss",$jobSL,$jobWS);
+        $jobSearch->execute();
+        $jobsFound=$jobSearch->get_result();
+    }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PipleLine</title>
+    <!-- cdn -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+     integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous"
+     referrerpolicy="no-referrer">
+     <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+             <div class="logo">
+            <span class="icon">
+                <img src="./Images/logo.png" alt="">
+            </span>
+            <div class="text-logo">
+                <h1>PipleLine</h1>
+            <p>Get your dream job</p>
+            </div>
+        </div>
+        </div>
+        <div class="col">
+            <ul class="nav">
+                <li class="home-page"><a href="./index.php">Home</a></li>
+                <li> <a href="./About.html">About</a></li>
+                <li> <a href="">Find a Job</a></li>
+                <li> <a href="">Contact</a></li>
+            </ul>
+            </div>
+            <div class="col">
+                <a class="btn" href="./login.php">Sign in</a>
+                <a class="btn" href="">Post a Job</a>
+            </div>
+            </div>
+        </div>
+       </nav>
+    </header>
+    <section class="home">
+        <video class="home-video" autoplay muted loop playsinline>
+        <source src="./Images/7643457-uhd_4096_2160_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="home-overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="titel-home">
+                        <h1>Find the job that fits the life you want</h1>
+                        <p>Browse thousands of openings from employers hiring right now, and apply in minutes.</p>
+                            <form action="" class="check-box" method="Get" >
+                               <div class="input-form">
+                                <label for="jobs"></label>
+                                <input type="text" name="a" id="jobs" placeholder="Job title or keyword">
+                               </div>
+                               <div class="select-form">
+                                <label class="select-loc" for="location"></label>
+                                    <select name="loc" id="location">
+                                        <option value="">Any Location</option>
+                                        <option value="">Upper Egypt</option>
+                                        <option value="">Lower Egypt</option>
+                                        <option value="">Remote</option>
+                                    </select>
+                                    </div>
+                                    <div class="search-form">
+                                        <button class="btn" type="submit">Find Job</button>
+                               </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="Popular-categories">
+        <div class="container">
+            <div class="Popular-categories-title">
+                <p>Popular categories</p>
+                <h2>Browse Top Categories</h2>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span class="logo1">
+                        <i class="fa-solid fa-palette"></i>
+                    </span>
+                    <div class="discribtion">
+                    <h2>
+                        <a href="">Design & Creative</a>
+                    </h2>
+                    <span class="num">(653)</span>
+                    </div>
+                </div>
+                <div class="col">
+                     <span class="logo1">
+                        <i class="fa-solid fa-code"></i>
+                    </span>
+                    <div class="discribtion">
+                    <h2>
+                        <a href="">Design & Development</a>
+                    </h2>
+                    <span class="num">(518)</span>
+                    </div>
+                </div>
+                <div class="col">
+                     <span class="logo1">
+                       <i class="fa-solid fa-chart-column"></i>
+                    </span>
+                    <div class="discribtion">
+                    <h2>
+                        <a href="">Sales & Marketing</a>
+                    </h2>
+                    <span class="num">(742)</span>
+                    </div>
+                </div>
+                <div class="col">
+                     <span class="logo1">
+                       <i class="fa-solid fa-mobile"></i>
+                    </span>
+                    <div class="discribtion">
+                    <h2>
+                        <a href="">Mobile Application</a>
+                    </h2>
+                    <span class="num">(306)</span>
+                    </div>
+                </div>
+                <div class="col">
+                     <span class="logo1">
+                       <i class="fa-solid fa-helmet-safety"></i>
+                    </span>
+                    <div class="discribtion">
+                    <h2>
+                        <a href="">Construction</a>
+                    </h2>
+                    <span class="num">(289)</span>
+                    </div>
+                </div>
+                <div class="col">
+                     <span class="logo1">
+                        <i class="fa-solid fa-microchip"></i>
+                    </span>
+                    <div class="discribtion">
+                    <h2>
+                        <a href="">Information Technology</a>
+                    </h2>
+                    <span class="num">(864)</span>
+                    </div>
+                </div>
+                <div class="col">
+                     <span class="logo1">
+                        <i class="fa-solid fa-building"></i>
+                    </span>
+                    <div class="discribtion">
+                    <h2>
+                        <a href="">Real Estate</a>
+                    </h2>
+                    <span class="num">(197)</span>
+                    </div>
+                    </div>
+                <div class="col">
+                     <span class="logo1">
+                        <i class="fa-solid fa-pen"></i>
+                    </span>
+                    <div class="discribtion">
+                    <h2>
+                        <a href="">Content Writer</a>
+                    </h2>
+                    <span class="num">(231)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btnn">
+            <button class="btn">Browse All Sectors</button>
+        </div>
+    </section>
+    <section class="upload-cv">
+        <div class="upload-cv-overlay"></div>
+        <div class="container">
+            <div class="row">
+            <div class="col">
+            <p>Stand out to employers</p>
+            <h2> Make a Difference with Your Online Resume!</h2>
+            <button class="btn">Upload your CV</button>
+            </div>
+            </div>
+        </div>
+    </section>
+    <section class="Recent-jobs">
+        <div class="Recent-jobs-title">
+            <p>Recent jobs</p>
+            <h3>Featured Jobs</h3>
+        </div>
+       <div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="job-card">
+                <div class="job-items">
+                    <span class="icon-company">
+                        <img src="./Images/company-1.svg" alt="Lumora logo">
+                    </span>
+                    <div class="discription">
+                        <a href="">
+                            <h4>Senior Product Designer</h4>
+                        </a>
+                        <ul>
+                            <li>Lumora Studio</li>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Smart Village,Cairo
+                            </li>
+                            <li>EGP 55-60k</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btn-time">
+                    <button class="btn">Full Time</button>
+                    <span>2 hours ago</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+              <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="job-card">
+                <div class="job-items">
+                    <span class="icon-company">
+                        <img src="./Images/company-2.svg" alt="Lumora logo">
+                    </span>
+                    <div class="discription">
+                        <a href="">
+                            <h4>Frontend Developer</h4>
+                        </a>
+                        <ul>
+                            <li>Kestrel Labs</li>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                 Remote
+                            </li>
+                            <li>EGP 75-95k</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btn-time">
+                    <button class="btn">Full Time</button>
+                    <span>5 hours ago</span>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+              <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="job-card">
+                <div class="job-items">
+                    <span class="icon-company">
+                        <img src="./Images/company-3.svg" alt="Lumora logo">
+                    </span>
+                    <div class="discription">
+                        <a href="">
+                            <h4>Customer Success Lead</h4>
+                        </a>
+                        <ul>
+                            <li> Tidewell</li>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Smouha,Alexandria
+                            </li>
+                            <li>EGP 35-50k</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btn-time">
+                    <button class="btn">Full Time</button>
+                    <span>1 Day ago</span>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+              <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="job-card">
+                <div class="job-items">
+                    <span class="icon-company">
+                        <img src="./Images/company-4.svg" alt="Lumora logo">
+                    </span>
+                    <div class="discription">
+                        <a href="">
+                            <h4>Marketing Coordinator</h4>
+                        </a>
+                        <ul>
+                            <li>Corvane Group</li>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                Dokki,Giza
+                            </li>
+                            <li>EGP 45-60k</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btn-time">
+                    <button class="btn">Full Time</button>
+                    <span>2 Day ago</span>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="Our-latest-blog">
+        <div class="container">
+            <div class="Our-latest-blog-title">
+                <p>Our latest blog</p>
+                <h4>Career advice</h4>
+            </div>
+            <div class="row">
+                <div class="col">
+                        <div class="blog-img">
+                            <img src="./Images/home-blog1.avif" alt="view image">
+                        </div>
+                        <div class="blog-body">
+                            <p>|   Interviews</p>
+                                <h5>
+                                    <a href="">Five questions to ask at the end of any interview</a>
+                                </h5>
+                                <a href="#">Read more »</a>
+                         </div>
+                </div>
+                <div class="col">
+                    <div class="blog-img">
+                            <img src="./Images/home-blog2.avif" alt="view image">
+                        </div>
+                        <div class="blog-body">
+                            <p>|   Careers</p>
+                                <h5>
+                                    <a href="">How to write a CV that gets read in six seconds</a>
+                                </h5>
+                                <a href="#">Read more »</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <Footer class="end">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="head">
+                        <h5>About Us</h5>
+                    </div>
+                    <div class="body">
+                        <p>PipleLine connects people
+                        <br> with the companies hiring
+                        <br> near them, from a first job to
+                        <br> a senior role.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="head">
+                        <h5>Contact Info</h5>
+                    </div>
+                    <div class="body">
+                        <ul>
+                        <li>
+                        <p>Address: 210 Example Street, Suite
+                        <br> 4, Springfield</p>
+                        </li>
+                        <li>
+                            <a href="">Phone: +1 (555) 010-0142</a>
+                        </li>
+                        <li>
+                            <a href="">Email: hello@example.com</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="head">
+                        <h5>Important Link</h5>
+                    </div>
+                    <div class="body">
+                        <ul>
+                        <li>
+                        <a href="">Find a Job</a>
+                        </li>
+                        <li>
+                            <a href="">Job Details</a>
+                        </li>
+                        <li>
+                            <a href="">About Us</a>
+                        </li>
+                        <li>
+                            <a href="">Career Blog</a>
+                        </li>
+                        <li>
+                            <a href="">Contact Us</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="head">
+                         <h5>Newsletter</h5>
+                    </div>
+                    <div class="body">
+                            <p>Weekly job alerts and career tips.
+                        <br> Unsubscribe at any time.</p>
+                        <form class="email" method="post" action="https://themebubble.com/demo/webify/organic/?na=s">
+                                    <input class="mail" type="email" required placeholder="Enter your Email" id="ne">
+                                    <button type="submit" class="btn">
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container1">
+            <div class="row">
+                <div class="col">
+                    <span class="logo-img">
+                        <img src="./Images/logo.png" alt="">
+                    </span>
+                </div>
+                <div class="col">
+                    <span class="num">5000+</span>
+                    <p>Open Roles</p>
+                </div>
+                <div class="col">
+                    <span class="num">451</span>
+                    <p>Hiring Companies</p>
+                </div>
+                <div class="col">
+                    <span class="num">568</span>
+                    <p>Hired This Month</p>
+                </div>
+            </div>
+        </div>
+        <hr class="border">
+        <div class="container1">
+            <div class="row1">
+                <div class="col">
+                    <p class="fuck">Copyright ©2026 All rights reserved</p>
+                </div>
+                <div class="col">
+                    <p>created by I&A&S&A</p>
+                </div>
+                <div class="col">
+                     <span class="icon-bttn1">
+                    <i class="fa-brands fa-facebook"></i>
+                </span>
+                <span class="icon-bttn2">
+                    <i class="fa-brands fa-google"></i>
+                </span>
+                <span class="icon-bttn3">
+                    <i class="fa-brands fa-instagram"></i>
+                </span>
+               <span class="icon-bttn4">
+                <i class="fa-brands fa-x-twitter"></i>
+            </span> 
+                </div>
+            </div>
+        </div>
+    </Footer>
+</body>
+</html>
